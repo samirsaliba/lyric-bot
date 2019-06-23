@@ -79,11 +79,11 @@ function tweet() {
 
             console.log(tweet)
             
-            //Bot.post('statuses/update', {status: tweet}, function(error, tweet, response) {
-            //    if (error) {
-            //        console.log("Error making post. ", error.message);
-            //    };
-            //});
+            Bot.post('statuses/update', {status: tweet}, function(error, tweet, response) {
+                if (error) {
+                    console.log("Error making post. ", error.message);
+                };
+            });
         }
     });
 }
