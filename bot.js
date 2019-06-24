@@ -233,7 +233,7 @@ function tweet() {
             // the code below actually (tries to) tweet, so if you're testing the bot 
             // make sure to comment the following lines
 
-            /*
+            
             Bot.post('statuses/update', {status: tweet}, function(error, tweet, response) {
                 if (error) {
                     console.log("Error making post. ", error.message);
@@ -242,7 +242,7 @@ function tweet() {
 					console.log("Tweet sent!.");
                 }
             });
-            */
+            
         }
     });
 }
