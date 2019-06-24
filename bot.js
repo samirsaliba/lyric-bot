@@ -14,9 +14,11 @@ function getRndInteger(min, max) {
 }
 
 function pickRandomBar(lyrics) {
+
     var aux = lyrics.split("/");
     const random =  getRndInteger(0, aux.length);
     var ret = aux[random].substr(4, aux[random].length)
+    console.log(aux.length)
     console.log(random)
     console.log(ret)
     return ret;
@@ -24,8 +26,8 @@ function pickRandomBar(lyrics) {
 
 
 function tweet() {
-	//var random =  getRndInteger(0, 9);
-	let random = 7;
+	random =  getRndInteger(0, 9);
+	console.log(random)
 	switch (random) {
   	case 0:
     	file = "tcdo.txt";
@@ -37,7 +39,7 @@ function tweet() {
 
   	case 2:
      	file = "grad.txt";
-    break;
+   	break;
 
   	case 3:
     	file = "808s.txt";
