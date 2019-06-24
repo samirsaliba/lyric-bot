@@ -17,68 +17,151 @@ function pickRandomBar(lyrics) {
 
     var aux = lyrics.split("/");
     const random =  getRndInteger(0, aux.length);
-    var ret = aux[random].substr(4, aux[random].length)
+    var ret = aux[random].substr(2, aux[random].length)
+    console.log("# of tweet candidates ")
     console.log(aux.length)
+   	console.log("chosen tweet # ")
     console.log(random)
     console.log(ret)
     return ret;
 }
 
+function pickRandomFile(){
+	/*
+	The approach below forces the probability of each tweet candidate
+	to be the same, considering the lyrics (tweet candidates) 
+	count for each album at the time;
+	If any more lyrics are added to one or more of the files,
+	then the if conditions must be updated
+	*/
 
-function tweet() {
+	//var i=0;
+	//var tcdo=0, lr=0, grad=0, eights=0, mbdtf=0, yeezus=0, tlop=0, ye=0, ksg=0; 
+	//while(i<100000){
+
+		random =  getRndInteger(0, 343);
+		if(random<24){
+			file = "lyrics/tcdo.txt";
+			//tcdo++;
+		}
+
+		else if(random<52){
+			file = "lyrics/lr.txt";
+			//lr++;
+		}
+
+		else if(random<88){
+			file = "lyrics/grad.txt";
+			//grad++;
+		}
+
+		else if(random<132){
+			file = "lyrics/808s.txt";
+			//eights++;
+		}
+
+		else if(random<170){
+			file = "lyrics/mbdtf.txt";
+			//mbdtf++;
+		}
+
+		else if(random<229){
+			file = "lyrics/yeezus.txt";
+			//yeezus++;
+		}
+
+		else if(random<281){
+			file = "lyrics/tlop.txt";
+			//tlop++;
+		}
+
+		else if(random<324){
+			file = "lyrics/ye.txt";
+			//ye++;
+		}
+
+		else if(random<343){
+			file = "lyrics/ksg.txt";
+			//ksg++;
+		}
+
+		//i++;
+	//}
+
+	/*
+	console.log("tcdo = " +tcdo);
+	console.log("lr = " +lr);
+	console.log("grad = " +grad);
+	console.log("eights = " +eights);
+	console.log("mbdtf = " +mbdtf);
+	console.log("yeezus = " +yeezus);
+	console.log("tlop = " +tlop);
+	console.log("ye = " +ye);
+	console.log("ksg = " +ksg);
+	*/
+	/*
+	//The approach below selects one album randomly,
+	//each album having the same probability of being selected;
+	//but since albuns differ in tweet candidates number,
+	//the probability of being selected is not the same for
+	//all the tweet candidates
+
 	random =  getRndInteger(0, 9);
-	console.log(random)
 	switch (random) {
   	case 0:
-    	file = "tcdo.txt";
+    	file = "lyrics/tcdo.txt";
     break;
 
   	case 1:
-    	file = "lr.txt";
+    	file = "lyrics/lr.txt";
     break;
 
   	case 2:
-     	file = "grad.txt";
+     	file = "lyrics/grad.txt";
    	break;
 
   	case 3:
-    	file = "808s.txt";
+    	file = "lyrics/808s.txt";
     break;
 
   	case 4:
-    	file = "mbdtf.txt";
+    	file = "lyrics/mbdtf.txt";
     break;
 
   	case 5:
-    	file = "yeezus.txt";
+    	file = "lyrics/yeezus.txt";
     break;
 
   	case 6:
-    	file = "tlop.txt";
+    	file = "lyrics/tlop.txt";
     break;
 
    	case 7:
-   		file = "ye.txt";
+   		file = "lyrics/ye.txt";
    	break;
 
    	case 8:
-   		file = "ksg.txt";	
+   		file = "lyrics/ksg.txt";	
    	break;
 }
+	*/
 
+	return file;
+
+}
+
+function tweet() {
+
+	file = pickRandomFile();
+	console.log(file)
+	
     fs.readFile(file, 'utf8', function(error, lyrics) {  
         if (error) {
             console.log(error.message);
         } else {
 
-            // checks to see if the start of the tweet doesn't start 
-            // with punctuation or special characters
-
             bar = pickRandomBar(lyrics);
             let tweet = bar;
-
-            // runs until char limit is reached and tries finishing the last word it was on
-
             console.log(tweet)
             
             Bot.post('statuses/update', {status: tweet}, function(error, tweet, response) {
