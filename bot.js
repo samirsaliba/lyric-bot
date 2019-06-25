@@ -229,14 +229,14 @@ function tweet() {
             // make sure to comment the following lines
 
             
-            //Bot.post('statuses/update', {status: tweet}, function(error, tweet, response) {
-            //    if (error) {
-            //        console.log("Error making post. ", error.message);
-            //    }
-            //    else {
-			//		console.log("Tweet sent!.");
-            //    }
-            //});
+            Bot.post('statuses/update', {status: tweet}, function(error, tweet, response) {
+                if (error) {
+                    console.log("Error making post. ", error.message);
+                }
+                else {
+					console.log("Tweet sent!.");
+                }
+            });
             
         }
     });
