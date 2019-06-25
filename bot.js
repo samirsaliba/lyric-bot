@@ -19,22 +19,17 @@ function getRndInteger(min, max) {
 function pickRandomBar(lyrics) {
 	/*
 	splits "lyrics" which is the full text of the file into an array of substrings
-	the / char is used as separator
-	subs the first 2 chars so it deletes the blank line bewteen lyrics
+	it splits the string every time a blank line occurs (\n\n)
 
 	then, randomizes an integer between 0 and the number of lyrics on the file
 	and uses this integer as index to the array of substrings
 	*/
 
-    var aux = lyrics.split("/");
+    var aux = lyrics.split(/\n\n/);
     const random =  getRndInteger(0, aux.length);
-    var ret = aux[random].substr(2, aux[random].length);
-    console.log("# of tweet candidates ");
-    console.log(aux.length);
-   	console.log("chosen tweet # ");
-    console.log(random);
-    console.log(ret);
-    return ret;
+    console.log("#tweet candidates: " + aux.length + " #chosen: " + random);
+
+    return aux[random];
 }
 
 function gnol(file){
@@ -46,7 +41,7 @@ function gnol(file){
         if (error) {
             console.log(error.message);
         } else {
-            var aux = text.split("/");
+            var aux = split(/\n\n/);
             console.log(file + " | " + aux.length);
         }
     });
@@ -234,14 +229,14 @@ function tweet() {
             // make sure to comment the following lines
 
             
-            Bot.post('statuses/update', {status: tweet}, function(error, tweet, response) {
-                if (error) {
-                    console.log("Error making post. ", error.message);
-                };
-                else {
-					console.log("Tweet sent!.");
-                }
-            });
+            //Bot.post('statuses/update', {status: tweet}, function(error, tweet, response) {
+            //    if (error) {
+            //        console.log("Error making post. ", error.message);
+            //    }
+            //    else {
+			//		console.log("Tweet sent!.");
+            //    }
+            //});
             
         }
     });

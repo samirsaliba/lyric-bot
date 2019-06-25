@@ -3,7 +3,7 @@ Twitter bot that tweets lyrics from a text file.
 Since I'm a big Kanye West fan, this one specifically posts Kanye West's songs lyrics.
 
 I split the lyrics from each album into a text file (not all lyrics, just the ones I personally picked that would be a good tweet, ofc imo);
-Each lyric from the text files should end with '/', then jump a line before writing the next lyric;
+Each lyric from the text files should be separated with a blank line (\n\n);
 
 Then, the bot randomly selects one of the text files (i.e. one album);
 When deciding from which text file to read it takes into account how many lyrics each text file has, so all the lyrics have equal chances of being chosen (it is further explained in the bot.js file);
