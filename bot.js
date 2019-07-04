@@ -41,7 +41,7 @@ function gnol(file){
         if (error) {
             console.log(error.message);
         } else {
-            var aux = split(/\n\n/);
+            var aux = text.split(/\n\n/);
             console.log(file + " | " + aux.length);
         }
     });
@@ -79,6 +79,12 @@ function getNumberOfLyrics(){
 
 	file = "lyrics/ksg.txt";
 	gnol(file);
+
+	file = "lyrics/cruel.txt";
+	gnol(file);
+
+	file = "lyrics/wtt.txt";
+	gnol(file);
 }
 
 function pickRandomFile(){
@@ -99,10 +105,10 @@ function pickRandomFile(){
 	// it will pick the files 100.000 times and print to console how many times each of the files was chosen.
 
 	//var i=0;
-	//var tcdo=0, lr=0, grad=0, eights=0, mbdtf=0, yeezus=0, tlop=0, ye=0, ksg=0; 
+	//var tcdo=0, lr=0, grad=0, eights=0, mbdtf=0, yeezus=0, tlop=0, ye=0, ksg=0, cruel=0, wtt=0; 
 	//while(i<100000){
 
-		random =  getRndInteger(0, 343);
+		random =  getRndInteger(0, 485);
 		if(random<24){
 			file = "lyrics/tcdo.txt";
 			//tcdo++;
@@ -148,18 +154,30 @@ function pickRandomFile(){
 			//ksg++;
 		}
 
+		else if(random<376){
+			file = "lyrics/cruel.txt";
+			//cruel++;
+		}
+
+		else if(random<485){
+			file = "lyrics/wtt.txt";
+			//wtt++;
+		}
+
 		//i++;
 	//}
 
-	// console.log("tcdo = " +tcdo);
-	// console.log("lr = " +lr);
-	// console.log("grad = " +grad);
-	// console.log("eights = " +eights);
-	// console.log("mbdtf = " +mbdtf);
-	// console.log("yeezus = " +yeezus);
-	// console.log("tlop = " +tlop);
-	// console.log("ye = " +ye);
-	// console.log("ksg = " +ksg);
+	//console.log("tcdo = " +tcdo);
+	//console.log("lr = " +lr);
+	//console.log("grad = " +grad);
+	//console.log("eights = " +eights);
+	//console.log("mbdtf = " +mbdtf);
+	//console.log("yeezus = " +yeezus);
+	//console.log("tlop = " +tlop);
+	//console.log("ye = " +ye);
+	//console.log("ksg = " +ksg);
+	//console.log("cruel = " +cruel);
+	//console.log("wtt = " +wtt);
 	
 	/*
 	//The approach below selects one album randomly,
@@ -168,7 +186,7 @@ function pickRandomFile(){
 	//the probability of being selected is not the same for
 	//all the tweet candidates
 
-	random =  getRndInteger(0, 9);
+	random =  getRndInteger(0, 11);
 	switch (random) {
 	  	case 0:
 	    	file = "lyrics/tcdo.txt";
@@ -205,6 +223,14 @@ function pickRandomFile(){
 	   	case 8:
 	   		file = "lyrics/ksg.txt";	
 	   	break;
+
+	   	case 9:
+	   		file = "lyrics/cruel.txt";	
+	   	break;
+
+	   	case 10:
+	   		file = "lyrics/wtt.txt";	
+	   	break;
 	}
 	*/
 
@@ -228,16 +254,15 @@ function tweet() {
             // the code below actually (tries to) tweet, so if you're testing the bot 
             // make sure to comment the following lines
 
-            
             Bot.post('statuses/update', {status: tweet}, function(error, tweet, response) {
                 if (error) {
-                    console.log("Error making post. ", error.message);
+                	console.log("Error making post. ", error.message);
+            		tweet();
                 }
                 else {
-					console.log("Tweet sent!.");
+					console.log("Tweet sent.");
                 }
-            });
-            
+            });    
         }
     });
 }
